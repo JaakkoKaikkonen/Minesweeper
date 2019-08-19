@@ -63,11 +63,15 @@ namespace Game {
 
 			}
 
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
-				gameOver = false;
-				win = false;
-				delete grid;
-				grid = new Grid(data, GRID_SIZE, NUM_OF_MINES);
+			if (sf::Event::KeyPressed == event.type) {
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
+					gameOver = false;
+					win = false;
+					delete grid;
+					grid = new Grid(data, GRID_SIZE, NUM_OF_MINES);
+				}
+
 			}
 
 		}
