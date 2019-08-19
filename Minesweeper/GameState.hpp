@@ -13,6 +13,7 @@ namespace Game {
 	{
 	public:
 		GameState(gameDataRef data);
+		~GameState();
 
 		void init();
 

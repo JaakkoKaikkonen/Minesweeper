@@ -25,14 +25,14 @@ namespace Game {
 		data->assets.loadTexture("mine", MINE_TEXTURE_FILEPATH);
 		data->assets.loadTexture("flag", FLAG_TEXTURE_FILEPATH);
 
-		//Sounds
-
 		//Fonts
 		data->assets.loadFont("font", FONT_FILEPATH);
 
 		//-------------------------------------------------------------------------------------
 
 		data->gameState = new GameState(data);
+
+		data->gameState->init();
 
 		this->run();
 	}
@@ -68,12 +68,9 @@ namespace Game {
 
 				accumulator -= dt;
 			}
-
 	
 		}
 
-
 	}
-
 
 }

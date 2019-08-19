@@ -25,6 +25,10 @@ namespace Game {
 		grid = new Grid(data, GRID_SIZE, NUM_OF_MINES);
 	}
 
+	GameState::~GameState() {
+		delete grid;
+	}
+
 	void GameState::init() {
 		std::cout << "Game state" << std::endl;
 	}
