@@ -9,18 +9,18 @@ namespace Game {
 	GameState::GameState(gameDataRef data)
 		: 
 		data(data),
-		gameOverText("GameOver", data->assets.getFont("font"), 38),
-		winText("Win!", data->assets.getFont("font"), 38)
+		gameOverText("GameOver", data->assets.getFont("font"), 42),
+		winText("Win!", data->assets.getFont("font"), 42)
 	{
 		gameOverText.setOutlineThickness(2.0f);
 		gameOverText.setOutlineColor(sf::Color::Black);
 		gameOverText.setOrigin(gameOverText.getGlobalBounds().width / 2, gameOverText.getGlobalBounds().height / 2);
-		gameOverText.setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.23f);
+		gameOverText.setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.225f);
 
 		winText.setOutlineThickness(2.0f);
 		winText.setOutlineColor(sf::Color::Black);
 		winText.setOrigin(winText.getGlobalBounds().width / 2, winText.getGlobalBounds().height / 2);
-		winText.setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.23f);
+		winText.setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.225f);
 
 		grid = new Grid(data, GRID_SIZE, NUM_OF_MINES);
 	}

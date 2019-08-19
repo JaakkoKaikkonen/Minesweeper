@@ -11,8 +11,10 @@ namespace Game {
 		cellWidth(SCREEN_WIDTH / (float)size),
 		closedCell(sf::Vector2f(cellWidth, cellWidth)),
 		openCell(sf::Vector2f(cellWidth, cellWidth)),
+		redCell(sf::Vector2f(cellWidth, cellWidth)),
 		mine(data->assets.getTexture("mine")),
-		flag(data->assets.getTexture("flag")), 
+		flag(data->assets.getTexture("flag")),
+		cross(data->assets.getTexture("cross")),
 		number("0", data->assets.getFont("font"), 20)
 	{
 		closedCell.setOutlineThickness(1.0f);
@@ -21,11 +23,18 @@ namespace Game {
 
 		openCell.setOutlineThickness(1.0f);
 		openCell.setOutlineColor(sf::Color::Black);
-		openCell.setFillColor(sf::Color(100, 100, 100));
+		openCell.setFillColor(sf::Color(120, 120, 120));
+
+		redCell.setFillColor(sf::Color::Red);
 
 		mine.setOrigin(mine.getGlobalBounds().width / 2, mine.getGlobalBounds().height / 2);
 		float mineScale = (cellWidth * 0.8f) / mine.getGlobalBounds().width;
 		mine.setScale(mineScale, mineScale);
+
+		cross.setOrigin(cross.getGlobalBounds().width / 2, cross.getGlobalBounds().height / 2);
+		float crossScaleX = (cellWidth * 0.8f) / cross.getGlobalBounds().width;
+		float crossScaleY = (cellWidth * 0.8f) / cross.getGlobalBounds().height;
+		cross.setScale(crossScaleX, crossScaleY);
 
 		flag.setOrigin(flag.getGlobalBounds().width / 2, flag.getGlobalBounds().height / 2);
 		float flagScaleX = (cellWidth * 0.8f) / flag.getGlobalBounds().width;
@@ -89,7 +98,7 @@ namespace Game {
 			if (getCell(gridX, gridY)->mine) {
 
 				hitMine = true;
-				this->setOpen(gridX, gridY);
+				redCell.setPosition(gridX * cellWidth, gridY * cellWidth);
 
 			} else if (getCell(gridX, gridY)->neighbors == 0) {
 
@@ -131,12 +140,7 @@ namespace Game {
 					openCell.setPosition(i * cellWidth, j * cellWidth);
 					data->window.draw(openCell);
 
-					if (getCell(i, j)->mine) {
-
-						mine.setPosition(i * cellWidth + cellWidth / 2, j * cellWidth + cellWidth / 2);
-						data->window.draw(mine);
-
-					} else if (getCell(i, j)->neighbors != 0) {
+					if (getCell(i, j)->neighbors != 0) {
 
 						number.setString(std::to_string(getCell(i, j)->neighbors));
 						number.setPosition(i * cellWidth + cellWidth / 2, j * cellWidth + cellWidth / 2);
@@ -154,6 +158,34 @@ namespace Game {
 						flag.setPosition(i * cellWidth + cellWidth / 2, j * cellWidth + cellWidth / 2);
 						data->window.draw(flag);
 
+					}
+
+				}
+
+				if (hitMine) {
+
+					if (getCell(i, j)->mine) {
+
+						if (int(redCell.getPosition().x / cellWidth) == i && int(redCell.getPosition().y / cellWidth) == j) {
+
+							data->window.draw(redCell);
+
+						} else {
+
+							openCell.setPosition(i * cellWidth, j * cellWidth);
+							data->window.draw(openCell);
+
+						}
+
+						mine.setPosition(i * cellWidth + cellWidth / 2, j * cellWidth + cellWidth / 2);
+						data->window.draw(mine);
+
+						if (getCell(i, j)->flag) {
+
+							cross.setPosition(i * cellWidth + cellWidth / 2, j * cellWidth + cellWidth / 2);
+							data->window.draw(cross);
+
+						}
 					}
 
 				}

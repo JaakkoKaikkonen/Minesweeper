@@ -24,6 +24,7 @@ namespace Game {
 		//Textures
 		data->assets.loadTexture("mine", MINE_TEXTURE_FILEPATH);
 		data->assets.loadTexture("flag", FLAG_TEXTURE_FILEPATH);
+		data->assets.loadTexture("cross", CROSS_TEXTURE_FILEPATH);
 
 		//Fonts
 		data->assets.loadFont("font", FONT_FILEPATH);

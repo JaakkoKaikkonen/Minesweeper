@@ -50,9 +50,11 @@ namespace Game {
 
 		sf::RectangleShape closedCell;
 		sf::RectangleShape openCell;
+		sf::RectangleShape redCell;
 
 		sf::Sprite mine;
 		sf::Sprite flag;
+		sf::Sprite cross;
 
 		sf::Text number;
 		
