@@ -26,17 +26,4 @@ namespace Game {
 		return fonts.at(name);
 	}
 
-	void AssetManager::loadSound(std::string name, std::string fileName) {
-		soundBuffers[name] = sf::SoundBuffer();
-		sounds[name] = sf::Sound();
-
-		if (soundBuffers[name].loadFromFile(fileName)) {
-			sounds[name].setBuffer(soundBuffers[name]);
-		}
-	}
-
-	sf::Sound& AssetManager::getSound(std::string name) {
-		return sounds.at(name);
-	}
-
 }

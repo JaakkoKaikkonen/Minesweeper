@@ -3,7 +3,6 @@
 #include <memory>
 #include <string>
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
 #include "State.hpp"
 #include "AssetManager.hpp"
 
@@ -14,8 +13,6 @@ namespace Game {
 		AssetManager assets;
 
 		State* gameState;
-
-		//sf::Music music;
 	};
 
 	typedef std::shared_ptr<GameData> gameDataRef;
