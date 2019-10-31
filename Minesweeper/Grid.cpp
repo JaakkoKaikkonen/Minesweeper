@@ -68,8 +68,8 @@ namespace Game {
 					continue;
 				}
 
-				for (int k = (i == 0 ? 0 : -1); k <= (i == gridSize - 1 ? 0 : 1); k++) {
-					for (int l = (j == 0 ? 0 : -1); l <= (j == gridSize - 1 ? 0 : 1); l++) {
+				for (int k = (i == 0 ? 0 : -1); k <= (i == (gridSize - 1) ? 0 : 1); k++) {
+					for (int l = (j == 0 ? 0 : -1); l <= (j == (gridSize - 1) ? 0 : 1); l++) {
 
 						if (getCell(i + k, j + l)->mine) {
 							getCell(i, j)->neighbors++;
@@ -144,6 +144,13 @@ namespace Game {
 
 						number.setString(std::to_string(getCell(i, j)->neighbors));
 						number.setPosition(i * cellWidth + cellWidth / 2, j * cellWidth + cellWidth / 2);
+						/*if (getCell(i, j)->neighbors == 1) {
+							number.setFillColor(sf::Color::Blue);
+						} else if(getCell(i, j)->neighbors == 2) {
+							number.setFillColor(sf::Color::Green);
+						} else if(getCell(i, j)->neighbors == 3) {
+							number.setFillColor(sf::Color::Red);
+						}*/
 						data->window.draw(number);
 
 					}
@@ -209,8 +216,8 @@ namespace Game {
 
 			if (getCell(gridX, gridY)->neighbors == 0) {
 
-				for (int i = (gridX == 0 ? 0 : -1); i <= (gridX == gridSize - 1 ? 0 : 1); i++) {
-					for (int j = (gridY == 0 ? 0 : -1); j <= (gridY == gridSize - 1 ? 0 : 1); j++) {
+				for (int i = (gridX == 0 ? 0 : -1); i <= (gridX == (gridSize - 1) ? 0 : 1); i++) {
+					for (int j = (gridY == 0 ? 0 : -1); j <= (gridY == (gridSize - 1) ? 0 : 1); j++) {
 						this->floodFill(gridX + i, gridY + j);
 					}
 				}

@@ -8,7 +8,7 @@
 
 #define GRID_SIZE 30
 
-#define NUM_OF_MINES 60
+#define NUM_OF_MINES 100
 
 
 #define TOP_ICON_FILEPATH "Resources/Images/minesweeper_flag.png"

@@ -10,7 +10,7 @@ namespace Game {
 		: 
 		data(data),
 		gameOverText("GameOver", data->assets.getFont("font"), 42),
-		winText("Win!", data->assets.getFont("font"), 42)
+		winText("Win", data->assets.getFont("font"), 42)
 	{
 		gameOverText.setOutlineThickness(2.0f);
 		gameOverText.setOutlineColor(sf::Color::Black);
